@@ -1,0 +1,13 @@
+#id-profile-photo{
+    width: 70%;
+}
+
+.jumbotron{
+    background-color: #eee;
+    border-radius: 5px;
+
+}
+
+.indent-4 {
+    text-indent: 5%;
+  }
