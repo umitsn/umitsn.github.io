@@ -1,9 +1,9 @@
-#id-profile-photo{
+#id-profile-photo {
     width: 95%;
     border-radius: 10px;
 }
 
-.jumbotron{
+.jumbotron {
     background-color: #eee;
     border-radius: 10px;
 
@@ -11,9 +11,25 @@
 
 .indent-4 {
     text-indent: 5%;
-  }
+}
 
-.center{
+.center {
     margin-left: auto;
     margin-right: auto;
+}
+
+button:hover {
+    background-color: #eee;
+}
+
+li{
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+ul {
+    background-color: rgb(220, 220, 220);
+    border-radius: 10px;
 }
