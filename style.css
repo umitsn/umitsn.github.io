@@ -9,7 +9,21 @@
 
 }
 
-.indent-4 {
+.div-baslik {
+    background-color: #eee;
+    height: 40px;
+    text-indent: 1%;
+    line-height: 40px;
+    border-radius: 10px;
+}
+
+.baslik{
+    font-weight: bold;
+    font-size: large;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.indent {
     text-indent: 5%;
 }
 
@@ -19,7 +33,7 @@
 }
 
 button:hover {
-    background-color: rgb(220, 220, 220);
+    background-color: rgb(210, 210, 210);
 }
 
 li {
@@ -33,3 +47,4 @@ ul {
     background-color: #eee;
     border-radius: 10px;
 }
+
