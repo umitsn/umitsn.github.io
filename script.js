@@ -15,7 +15,7 @@ const LoadPage = (page) => {
 // Eğer ytPlaylist yüklendiyse script dosyasını da yükle
       if (page === "script2") {
         const script = document.createElement("script");
-        script.src = "ytPlaylist.js";
+        script.src = "script2.js";
         script.defer = true;
         document.body.appendChild(script);
       }
