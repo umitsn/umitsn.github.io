@@ -8,12 +8,15 @@
   <div id="main" style="margin-left:310px; padding:1.5rem;">
     <iframe id="videoFrame" src="" allowfullscreen style="width:100%; height:420px; border:none; border-radius:10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);"></iframe>
     <div class="description" id="videoDescription" style="margin-top:1rem; font-size:15px; color:#444;"></div>
-    <div class="code-block" id="videoCode" style="background:#f4f4f4; border-left:4px solid #007acc; padding:1rem; font-family:monospace; white-space:pre-wrap; margin-top:1rem; border-radius:6px; font-size:14px;"></div>
+    <div class="code-block" style="position:relative;">
+      <pre id="videoCode" style="background:#f4f4f4; border-left:4px solid #007acc; padding:1rem; font-family:monospace; white-space:pre-wrap; margin-top:1rem; border-radius:6px; font-size:14px; overflow:auto;"></pre>
+      <button onclick="copyCode()" style="position:absolute; top:10px; right:10px; padding:5px 10px; font-size:12px; background:#007acc; color:white; border:none; border-radius:4px; cursor:pointer;">Kopyala</button>
+    </div>
     <a class="subscribe-button" href="https://www.youtube.com/@kanaladi?sub_confirmation=1" target="_blank" style="display:inline-block; background-color:#cc0000; color:white; padding:10px 16px; margin-top:1.5rem; border-radius:5px; font-weight:bold; text-decoration:none;">📺 Abone Ol</a>
     <div class="footer" style="margin-top:2rem; text-align:center; padding:1rem; font-size:14px; color:#777;">
       <div class="social-links">
         <a href="https://twitter.com/seunmit" target="_blank" style="margin:0 8px; color:#007acc; text-decoration:none;">Twitter</a>
-        <a href="https://instagram.com/sn.umit" target="_blank" style="margin:0 8px; color:#007acc; text-decoration:none;">Instagram</a>
+        <a href="https://instagram.com/umit.sn" target="_blank" style="margin:0 8px; color:#007acc; text-decoration:none;">Instagram</a>
       </div>
       <p>&copy; 2025 Python Shorts</p>
     </div>
@@ -69,6 +72,13 @@
   function filterVideos(term) {
     const filtered = allVideos.filter(v => v.title.toLowerCase().includes(term.toLowerCase()));
     renderVideos(filtered);
+  }
+
+  function copyCode() {
+    const code = document.getElementById("videoCode").textContent;
+    navigator.clipboard.writeText(code).then(() => {
+      alert("Kod kopyalandı!");
+    });
   }
 
   document.getElementById("searchInput").addEventListener("input", (e) => {
