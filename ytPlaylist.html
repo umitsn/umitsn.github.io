@@ -1,3 +1,21 @@
+<script>
+  let allVideos = [
+    {
+      id: "nhhsmV03knU",
+      title: "split() Fonksiyonu - 1 Dakikada Python",
+      description: "split() fonksiyonu, bir string'i boşluk veya belirli bir ayıraca göre parçalara ayırır.",
+      code: "text = \"Merhaba dünya\"\nkelimeler = text.split()\nprint(kelimeler)  # ['Merhaba', 'ünya']"
+    },
+    {
+      id: "yWpR63iUcMI",
+      title: "join() Fonksiyonu - Listeyi Stringe Çevir",
+      description: "join() fonksiyonu, bir listeyi belirli bir ayırıcı ile birleştirerek string oluşturur.",
+      code: "kelimeler = ['Python', 'çok', 'güçlü']\ncumle = ' '.join(kelimeler)\nprint(cumle)  # Python çok güçlü"
+    }
+  ];
+</script>
+
+
 <div id="ytPlaylistContent">
   <div id="sidebar" style="float:left; width:300px; height:100%; overflow-y:auto; border-right:1px solid #ddd; padding:1rem; background:#fff;">
     <h2>📚 Python Shorts</h2>
@@ -24,20 +42,7 @@
 </div>
 
 <script>
-  let allVideos = [
-    {
-      id: "nhhsmV03knU",
-      title: "split() Fonksiyonu - 1 Dakikada Python",
-      description: "split() fonksiyonu, bir string'i boşluk veya belirli bir ayıraca göre parçalara ayırır.",
-      code: "text = \"Merhaba dünya\"\nkelimeler = text.split()\nprint(kelimeler)  # ['Merhaba', 'ünya']"
-    },
-    {
-      id: "yWpR63iUcMI",
-      title: "join() Fonksiyonu - Listeyi Stringe Çevir",
-      description: "join() fonksiyonu, bir listeyi belirli bir ayırıcı ile birleştirerek string oluşturur.",
-      code: "kelimeler = ['Python', 'çok', 'güçlü']\ncumle = ' '.join(kelimeler)\nprint(cumle)  # Python çok güçlü"
-    }
-  ];
+
 
   function loadVideo(videoId, description, code, element) {
     const videoFrame = document.getElementById("videoFrame");
