@@ -13,7 +13,7 @@ const LoadPage = (page) => {
             contentEl.innerHTML = htmlSnippet;
 
 // Eğer ytPlaylist yüklendiyse script dosyasını da yükle
-      if (pageName === "script2") {
+      if (page === "script2") {
         const script = document.createElement("script");
         script.src = "ytPlaylist.js";
         script.defer = true;
