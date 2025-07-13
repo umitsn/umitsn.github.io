@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Videoları Oynatma Listesi</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background-color: #f9f9f9;
+    }
+    #sidebar {
+      width: 300px;
+      background-color: #ffffff;
+      border-right: 1px solid #ddd;
+      padding: 1rem;
+      overflow-y: auto;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+    #sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 1rem;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #videoList {
+      list-style: none;
+      padding: 0;
+    }
+    #videoList li {
+      margin-bottom: 10px;
+    }
+    #videoList a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      display: block;
+      padding: 5px;
+      border-radius: 4px;
+    }
+    #videoList a:hover {
+      background-color: #f0f0f0;
+    }
+    #videoList a.active {
+      background-color: #007acc;
+      color: #fff;
+    }
+    #main {
+      flex: 1;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    iframe {
+      width: 100%;
+      height: 420px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .description {
+      margin-top: 1rem;
+      font-size: 15px;
+      color: #444;
+    }
+    .code-block {
+      background: #f4f4f4;
+      border-left: 4px solid #007acc;
+      padding: 1rem;
+      font-family: monospace;
+      white-space: pre-wrap;
+      margin-top: 1rem;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 1rem;
+      font-size: 14px;
+      color: #777;
+    }
+    .social-links a {
+      margin: 0 8px;
+      color: #007acc;
+      text-decoration: none;
+    }
+    .subscribe-button {
+      display: inline-block;
+      background-color: #cc0000;
+      color: white;
+      padding: 10px 16px;
+      margin-top: 1.5rem;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <h2>📚 Python Shorts</h2>
+    <input type="text" id="searchInput" placeholder="Video ara...">
+    <ul id="videoList"></ul>
+  </div>
+
+  <div id="main">
+    <iframe id="videoFrame" src="" allowfullscreen></iframe>
+    <div class="description" id="videoDescription"></div>
+    <div class="code-block" id="videoCode"></div>
+    <a class="subscribe-button" href="https://www.youtube.com/@kanaladi?sub_confirmation=1" target="_blank">📺 Abone Ol</a>
+    <div class="footer">
+      <div class="social-links">
+        <a href="https://twitter.com/kullaniciadi" target="_blank">Twitter</a>
+        <a href="https://instagram.com/kullaniciadi" target="_blank">Instagram</a>
+      </div>
+      <p>&copy; 2025 Python Shorts</p>
+    </div>
+  </div>
+
+  <script>
+    let allVideos = [
+      {
+        id: "nhhsmV03knU",
+        title: "split() Fonksiyonu - 1 Dakikada Python",
+        description: "split() fonksiyonu, bir string'i boşluk veya belirli bir ayıraca göre parçalara ayırır.",
+        code: "text = \"Merhaba dünya\"\nkelimeler = text.split()\nprint(kelimeler)  # ['Merhaba', 'dünya']"
+      },
+      {
+        id: "yWpR63iUcMI",
+        title: "join() Fonksiyonu - Listeyi Stringe Çevir",
+        description: "join() fonksiyonu, bir listeyi belirli bir ayırıcı ile birleştirerek string oluşturur.",
+        code: "kelimeler = ['Python', 'çok', 'güçlü']\ncumle = ' '.join(kelimeler)\nprint(cumle)  # Python çok güçlü"
+      }
+    ];
+
+    function loadVideo(videoId, description, code, element) {
+      const videoFrame = document.getElementById("videoFrame");
+      const videoDescription = document.getElementById("videoDescription");
+      const videoCode = document.getElementById("videoCode");
+      videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
+      videoDescription.textContent = description;
+      videoCode.textContent = code;
+      document.querySelectorAll('#videoList a').forEach(a => a.classList.remove('active'));
+      if (element) element.classList.add('active');
+    }
+
+    function renderVideos(videos) {
+      const videoList = document.getElementById("videoList");
+      videoList.innerHTML = '';
+      videos.forEach((video, index) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.textContent = video.title;
+        a.href = "#";
+        a.onclick = function () {
+          loadVideo(video.id, video.description, video.code, a);
+          return false;
+        };
+        li.appendChild(a);
+        videoList.appendChild(li);
+
+        if (index === 0) loadVideo(video.id, video.description, video.code, a);
+      });
+    }
+
+    function filterVideos(term) {
+      const filtered = allVideos.filter(v => v.title.toLowerCase().includes(term.toLowerCase()));
+      renderVideos(filtered);
+    }
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      filterVideos(e.target.value);
+    });
+
+    renderVideos(allVideos);
+  </script>
+</body>
+</html>
