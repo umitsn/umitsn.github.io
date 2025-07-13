@@ -1,4 +1,3 @@
-
 <div id="ytPlaylistContent">
   <div id="sidebar" style="float:left; width:300px; height:100%; overflow-y:auto; border-right:1px solid #ddd; padding:1rem; background:#fff;">
     <h2>📚 Python Shorts</h2>
@@ -13,33 +12,34 @@
       <pre id="videoCode" style="background:#f4f4f4; border-left:4px solid #007acc; padding:1rem; font-family:monospace; white-space:pre-wrap; margin-top:1rem; border-radius:6px; font-size:14px; overflow:auto;"></pre>
       <button onclick="copyCode()" style="position:absolute; top:10px; right:10px; padding:5px 10px; font-size:12px; background:#007acc; color:white; border:none; border-radius:4px; cursor:pointer;">Kopyala</button>
     </div>
-    <a class="subscribe-button" href="https://www.youtube.com/@umitsn?sub_confirmation=1" target="_blank" style="display:inline-block; background-color:#cc0000; color:white; padding:10px 16px; margin-top:1.5rem; border-radius:5px; font-weight:bold; text-decoration:none;">📺 Abone Ol</a>
+    <a class="subscribe-button" href="https://www.youtube.com/@kanaladi?sub_confirmation=1" target="_blank" style="display:inline-block; background-color:#cc0000; color:white; padding:10px 16px; margin-top:1.5rem; border-radius:5px; font-weight:bold; text-decoration:none;">📺 Abone Ol</a>
     <div class="footer" style="margin-top:2rem; text-align:center; padding:1rem; font-size:14px; color:#777;">
       <div class="social-links">
         <a href="https://twitter.com/seunmit" target="_blank" style="margin:0 8px; color:#007acc; text-decoration:none;">Twitter</a>
         <a href="https://instagram.com/umit.sn" target="_blank" style="margin:0 8px; color:#007acc; text-decoration:none;">Instagram</a>
       </div>
-      <p>&copy; 2025</p>
+      <p>&copy; 2025 Python Shorts</p>
     </div>
   </div>
 </div>
 
 <script>
-let allVideos = [
-  {
-    id: "nhhsmV03knU",
-    title: "split() Fonksiyonu - 1 Dakikada Python",
-    description: "split() fonksiyonu, bir string'i boşluk veya belirli bir ayıraca göre parçalara ayırır.",
-    code: "text = \"Merhaba dünya\"\nkelimeler = text.split()\nprint(kelimeler)  # ['Merhaba', 'dünya']"
-  },
-  {
-    id: "yWpR63iUcMI",
-    title: "join() Fonksiyonu - Listeyi Stringe Çevir",
-    description: "join() fonksiyonu, bir listeyi belirli bir ayırıcı ile birleştirerek string oluşturur.",
-    code: "kelimeler = ['Python', 'çok', 'güçlü']\ncumle = ' '.join(kelimeler)\nprint(cumle)  # Python çok güçlü"
-  }
-];
-    function loadVideo(videoId, description, code, element) {
+  let allVideos = [
+    {
+      id: "nhhsmV03knU",
+      title: "split() Fonksiyonu - 1 Dakikada Python",
+      description: "split() fonksiyonu, bir string'i boşluk veya belirli bir ayıraca göre parçalara ayırır.",
+      code: "text = \"Merhaba dünya\"\nkelimeler = text.split()\nprint(kelimeler)  # ['Merhaba', 'ünya']"
+    },
+    {
+      id: "yWpR63iUcMI",
+      title: "join() Fonksiyonu - Listeyi Stringe Çevir",
+      description: "join() fonksiyonu, bir listeyi belirli bir ayırıcı ile birleştirerek string oluşturur.",
+      code: "kelimeler = ['Python', 'çok', 'güçlü']\ncumle = ' '.join(kelimeler)\nprint(cumle)  # Python çok güçlü"
+    }
+  ];
+
+  function loadVideo(videoId, description, code, element) {
     const videoFrame = document.getElementById("videoFrame");
     const videoDescription = document.getElementById("videoDescription");
     const videoCode = document.getElementById("videoCode");
@@ -81,9 +81,20 @@ let allVideos = [
     });
   }
 
-  document.getElementById("searchInput").addEventListener("input", (e) => {
-    filterVideos(e.target.value);
-  });
+  function initPlaylistPage() {
+    const input = document.getElementById("searchInput");
+    if (input) {
+      input.addEventListener("input", (e) => {
+        filterVideos(e.target.value);
+      });
+    }
+    renderVideos(allVideos);
+  }
 
-  renderVideos(allVideos);
+  // Sayfa dinamik yüklendiği için, içerik yüklendikten sonra başlat
+  setTimeout(() => {
+    if (document.getElementById("searchInput")) {
+      initPlaylistPage();
+    }
+  }, 100);
 </script>
